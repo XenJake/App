@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Community</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f0f4c3, #e1bee7);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+        }
+
+        #postForm {
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #8e24aa;
+        }
+
+        .post {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #fce4ec;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Christian Community</h1>
+        <div id="postForm">
+            <input type="text" id="username" placeholder="Enter your name" required>
+            <textarea id="postContent" placeholder="Share your thoughts or scripture..." required></textarea>
+            <button onclick="submitPost()">Post</button>
+        </div>
+        <div id="posts"></div>
+    </div>
+    <script>
+        const postsContainer = document.getElementById('posts');
+
+        function submitPost() {
+            const username = document.getElementById('username').value;
+            const postContent = document.getElementById('postContent').value;
+
+            if (username && postContent) {
+                const post = document.createElement('div');
+                post.className = 'post';
+                post.innerHTML = `<strong>${username}</strong><p>${postContent}</p>`;
+                postsContainer.prepend(post);
+
+                // Clear the input fields
+                document.getElementById('username').value = '';
+                document.getElementById('postContent').value = '';
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+    </script>
+</body>
+</html>
